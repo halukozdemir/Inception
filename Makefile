@@ -21,11 +21,17 @@ re: down
 clean: down
 	@printf "Cleaning configuration ${name}...\n"
 	@docker system prune -a
+	@sudo rm -rf /home/halozdem/data/wordpress/*
+	@sudo rm -rf /home/halozdem/data/mariadb/*
 
 fclean: clean
 	@printf "Total clean of all configurations ${name}...\n"
 	@docker system prune --all --force --volumes
 	@docker network prune --force
 	@docker volume prune --force
+	@sudo rm -rf /home/halozdem/data/wordpress
+	@sudo rm -rf /home/halozdem/data/mariadb
+	@mkdir -p /home/halozdem/data/wordpress
+	@mkdir -p /home/halozdem/data/mariadb
 
 .PHONY: all build down re clean fclean

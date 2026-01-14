@@ -51,8 +51,16 @@ networks:
 volumes:
   mariadb_vol:
     driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/halozdem/data/mariadb
   wordpress_vol:
     driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/halozdem/data/wordpress
 
 secrets:
   db_password:
