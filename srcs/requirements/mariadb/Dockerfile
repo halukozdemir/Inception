@@ -12,7 +12,7 @@ RUN chmod +x /usr/local/bin/mariadb.sh
 
 RUN mkdir -p /var/run/mysqld && \
     chown -R mysql:mysql /var/run/mysqld && \
-    chmod 777 /var/run/mysqld
+    chmod 755 /var/run/mysqld
 
 EXPOSE 3306
 

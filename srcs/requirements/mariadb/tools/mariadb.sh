@@ -38,7 +38,7 @@ EOF
     touch "$INIT_MARKER"
     echo "Database $SQL_DATABASE created successfully"
     
-    mysqladmin shutdown
+    mysqladmin -u root -p"$SQL_ROOT_PASSWORD" shutdown
     sleep 2
 fi
 

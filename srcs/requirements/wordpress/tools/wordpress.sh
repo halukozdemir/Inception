@@ -8,7 +8,7 @@ WP_USER_PASSWORD=$(cat /run/secrets/wp_user_password)
 cd /var/www/wordpress
 
 echo "Waiting for MariaDB..."
-while ! mysqladmin ping -h"$SQL_HOST" --silent; do
+while ! mysqladmin ping -h"$SQL_HOST" -u"$SQL_USER" -p"$SQL_PASSWORD" --silent; do
     sleep 1
 done
 echo "MariaDB is ready!"
