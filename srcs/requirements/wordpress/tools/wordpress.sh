@@ -7,10 +7,20 @@ WP_USER_PASSWORD=$(cat /run/secrets/wp_user_password)
 
 cd /var/www/wordpress
 
+# Wait for MariaDB to be ready
+echo "Waiting for MariaDB..."
+while ! mysqladmin ping -h"$SQL_HOST" --silent; do
+    sleep 1
+done
+echo "MariaDB is ready!"
+
 if [ ! -f wp-config.php ]; then
     echo "Wordpress is not installed. Installing..."
     
-    wp core download --allow-root
+    # Download WordPress only if not already present
+    if [ ! -f wp-load.php ]; then
+        wp core download --allow-root
+    fi
     
     wp config create \
         --dbname=$SQL_DATABASE \
@@ -21,7 +31,7 @@ if [ ! -f wp-config.php ]; then
 
     wp core install \
         --url=$DOMAIN_NAME \
-        --title=$SITE_TITLE \
+        --title="$SITE_TITLE" \
         --admin_user=$WP_ADMIN_USER \
         --admin_password=$WP_ADMIN_PASSWORD \
         --admin_email=$WP_ADMIN_EMAIL \

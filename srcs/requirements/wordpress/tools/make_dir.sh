@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ ! -d "/home/login/data" ]; then
-        mkdir -p /home/login/data/mariadb
-        mkdir -p /home/login/data/wordpress
+if [ ! -d "$HOME/data" ]; then
+        mkdir -p $HOME/data/mariadb
+        mkdir -p $HOME/data/wordpress
 fi
