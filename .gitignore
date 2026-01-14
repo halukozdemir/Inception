@@ -1,6 +1,3 @@
-# Secrets - şifreler Git'e gitmemeli
 srcs/secrets/
 srcs/.env
-
-# Data volumes
 data/

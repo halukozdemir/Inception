@@ -18,14 +18,11 @@ else
     exit 1
 fi
 
-# Check if database already initialized
 if [ ! -f "$INIT_MARKER" ]; then
     echo "Initializing database..."
     
-    # Start mariadb in background
     mysqld_safe &
     
-    # Wait for MariaDB to be ready
     while ! mysqladmin ping --silent; do
         sleep 1
     done
@@ -41,7 +38,6 @@ EOF
     touch "$INIT_MARKER"
     echo "Database $SQL_DATABASE created successfully"
     
-    # Stop mariadb gracefully
     mysqladmin shutdown
     sleep 2
 fi

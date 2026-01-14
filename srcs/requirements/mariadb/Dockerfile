@@ -5,7 +5,6 @@ RUN apt-get update && apt-get install -y mariadb-server
 COPY conf/my.cnf /etc/mysql/conf.d/my.cnf
 RUN chmod 644 /etc/mysql/conf.d/my.cnf
 
-# Fix bind-address to allow external connections
 RUN sed -i 's/bind-address.*=.*127.0.0.1/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
 
 COPY tools/mariadb.sh /usr/local/bin/mariadb.sh
