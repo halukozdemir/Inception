@@ -1,6 +1,6 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
-RUN apt-get update && apt-get install -y mariadb-server
+RUN apt update && apt install -y mariadb-server
 
 COPY conf/my.cnf /etc/mysql/conf.d/my.cnf
 RUN chmod 644 /etc/mysql/conf.d/my.cnf
@@ -13,6 +13,10 @@ RUN chmod +x /usr/local/bin/mariadb.sh
 RUN mkdir -p /var/run/mysqld && \
     chown -R mysql:mysql /var/run/mysqld && \
     chmod 755 /var/run/mysqld
+
+RUN mkdir -p /var/log/mysql && \
+    chown -R mysql:mysql /var/log/mysql && \
+    chmod 755 /var/log/mysql
 
 EXPOSE 3306
 

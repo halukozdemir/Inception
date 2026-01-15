@@ -41,8 +41,17 @@ if [ ! -f wp-config.php ]; then
         --user_pass=$WP_USER_PASSWORD \
         --role=editor \
         --allow-root
+
+    # Redis cache configuration
+    wp config set WP_REDIS_HOST redis --allow-root
+    wp config set WP_REDIS_PORT 6379 --allow-root
+    wp config set WP_CACHE true --raw --allow-root
+
+    # Install and activate Redis Object Cache plugin
+    wp plugin install redis-cache --activate --allow-root
+    wp redis enable --allow-root
     
     echo "Wordpress installed successfully"
 fi
 
-exec /usr/sbin/php-fpm7.4 -F
+exec /usr/sbin/php-fpm8.2 -F

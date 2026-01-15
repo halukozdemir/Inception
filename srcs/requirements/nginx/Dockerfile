@@ -1,6 +1,6 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
-RUN apt-get update && apt-get install -y nginx openssl
+RUN apt update && apt install -y nginx openssl
 
 RUN mkdir -p /etc/nginx/ssl && \
     openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout \
