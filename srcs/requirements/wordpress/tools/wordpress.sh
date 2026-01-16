@@ -42,16 +42,21 @@ if [ ! -f wp-config.php ]; then
         --role=editor \
         --allow-root
 
-    # Redis cache configuration
     wp config set WP_REDIS_HOST redis --allow-root
     wp config set WP_REDIS_PORT 6379 --allow-root
     wp config set WP_CACHE true --raw --allow-root
 
-    # Install and activate Redis Object Cache plugin
     wp plugin install redis-cache --activate --allow-root
     wp redis enable --allow-root
     
     echo "Wordpress installed successfully"
 fi
+
+
+wp option update users_can_register 1 --allow-root
+wp option update default_role subscriber --allow-root
+
+chown -R www-data:www-data /var/www/wordpress
+chmod -R 775 /var/www/wordpress
 
 exec /usr/sbin/php-fpm8.2 -F
