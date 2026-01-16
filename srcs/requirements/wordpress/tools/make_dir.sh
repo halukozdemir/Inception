@@ -1,7 +1,8 @@
 #!/bin/bash
-DATA_DIR="/home/halozdem/data"
 
-if [ ! -d "$DATA_DIR" ]; then
-        mkdir -p $DATA_DIR/mariadb
-        mkdir -p $DATA_DIR/wordpress
+source srcs/.env
+
+if [ ! -d "$DATA_PATH" ]; then
+        mkdir -p $DATA_PATH/mariadb
+        mkdir -p $DATA_PATH/wordpress
 fi

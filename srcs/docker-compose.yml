@@ -114,13 +114,13 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/halozdem/data/mariadb
+      device: ${DATA_PATH}/mariadb
   wordpress_vol:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: /home/halozdem/data/wordpress
+      device: ${DATA_PATH}/wordpress
   portainer_data:
     driver: local
 

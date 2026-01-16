@@ -1,5 +1,9 @@
 name = inception
 
+include srcs/.env
+export DATA_PATH
+
+
 all:
 	@printf "Launch configuration ${name}...\n"
 	@bash srcs/requirements/wordpress/tools/make_dir.sh
@@ -28,9 +32,9 @@ fclean: down
 	@docker network prune --force
 	@docker volume prune --force
 	@docker volume rm -f srcs_portainer_data 2>/dev/null || true
-	@sudo rm -rf /home/halozdem/data/wordpress
-	@sudo rm -rf /home/halozdem/data/mariadb
-	@mkdir -p /home/halozdem/data/wordpress
-	@mkdir -p /home/halozdem/data/mariadb
+	@sudo rm -rf $(DATA_PATH)/wordpress
+	@sudo rm -rf $(DATA_PATH)/mariadb
+	@mkdir -p $(DATA_PATH)/wordpress
+	@mkdir -p $(DATA_PATH)/mariadb
 
 .PHONY: all build down re clean fclean
