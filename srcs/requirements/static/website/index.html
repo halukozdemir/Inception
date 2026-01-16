@@ -1,217 +1,937 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haluk Mert Özdemir - Portfolio</title>
+    <title>Haluk Mert ÖZDEMİR // Systems Engineer</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Added styles for animations */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+        @keyframes rockPop {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">halozdem</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#music">🎵 Music</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <!-- Animated cursor follower -->
+    <div id="cursor-follower"></div>
+    
+    <!-- Glitch overlay -->
+    <div class="glitch-overlay"></div>
+    
+    <!-- Terminal-style header -->
+    <header class="terminal-header">
+        <div class="terminal-bar">
+            <div class="terminal-buttons">
+                <span class="btn-close"></span>
+                <span class="btn-minimize"></span>
+                <span class="btn-maximize"></span>
+            </div>
+            <div class="terminal-title">haluk@engineer:~$ ./portfolio.sh</div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Glitch Effect -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="glitch-wrapper">
+                    <h1 class="glitch" data-text="HALUK MERT ÖZDEMİR">HALUK MERT ÖZDEMİR</h1>
+                </div>
+                <div class="typewriter">
+                    <p id="typed-text"></p>
+                    <span class="cursor-blink">|</span>
+                </div>
+                <div class="hero-tags">
+                    <span class="tag">C++</span>
+                    <span class="tag">Systems Programming</span>
+                    <span class="tag">Blockchain</span>
+                    <span class="tag rotating">404_HUMAN_NOT_FOUND</span>
+                </div>
+            </div>
+            <div class="floating-cube"></div>
+        </div>
+    </section>
+
+    <!-- Navigation Matrix -->
+    <nav class="matrix-nav">
+        <button class="nav-btn" data-section="about">
+            <span class="nav-icon">[01]</span>
+            <span class="nav-label">whoami</span>
+        </button>
+        <button class="nav-btn" data-section="experience">
+            <span class="nav-icon">[02]</span>
+            <span class="nav-label">./work.log</span>
+        </button>
+        <button class="nav-btn" data-section="projects">
+            <span class="nav-icon">[03]</span>
+            <span class="nav-label">git commits</span>
+        </button>
+        <button class="nav-btn" data-section="skills">
+            <span class="nav-icon">[04]</span>
+            <span class="nav-label">tech_stack.json</span>
+        </button>
+        <button class="nav-btn music-btn" data-section="music">
+            <span class="nav-icon">[🎸]</span>
+            <span class="nav-label">rock.club</span>
+        </button>
+        <button class="nav-btn" data-section="contact">
+            <span class="nav-icon">[05]</span>
+            <span class="nav-label">ping_me</span>
+        </button>
     </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Merhaba, ben <span class="highlight">Haluk Mert Özdemir</span></h1>
-            <p class="subtitle">Software Engineer | 42 Istanbul | Backend & Mobile Developer</p>
-            <a href="#projects" class="btn">Projelerimi Gör</a>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <h2>Hakkımda</h2>
-        <div class="about-content">
-            <p>Software Engineer with a strong foundation in Computer Engineering and systems programming (C/C++). 
-               Actively expanding expertise into <strong>Backend Development (Python, SQL, Node.js/Express)</strong> and 
-               <strong>Mobile Development (Flutter)</strong>. Proven problem-solver with experience in scalable architecture 
-               and high-performance applications.</p>
-        </div>
-    </section>
-
-    <section id="education" class="education">
-        <h2>Eğitim</h2>
-        <div class="education-grid">
-            <div class="edu-card">
-                <span class="edu-date">2023 - 2025</span>
-                <h3>Ecole 42 Istanbul</h3>
-                <p>Advanced Software Engineering</p>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="prompt">root@haluk:~$</span>
+                <span class="command">cat about.txt</span>
             </div>
-            <div class="edu-card">
-                <span class="edu-date">2020 - 2024</span>
-                <h3>Erciyes University</h3>
-                <p>B.Sc. Computer Engineering</p>
-            </div>
-            <div class="edu-card">
-                <span class="edu-date">2021 - 2022</span>
-                <h3>Google Game Academy</h3>
-                <p>Game Dev & Entrepreneurship</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience" class="experience">
-        <h2>Deneyim</h2>
-        <div class="exp-grid">
-            <div class="exp-card">
-                <div class="exp-header">
-                    <h3>OGEM İstanbul</h3>
-                    <span class="exp-date">2025</span>
+            <div class="card terminal-card">
+                <div class="ascii-art">
+    ___  ___  ___  ___  ___  ___
+   |   ||   ||   ||   ||   ||   |
+   | S || Y || S || T || E || M |
+   |___||___||___||___||___||___|
                 </div>
-                <p class="exp-role">Software Developer - Startup</p>
-                <p>Engineered core architecture for Slidle. Optimized algorithms for real-time interactions. Agile workflow.</p>
-            </div>
-            <div class="exp-card">
-                <div class="exp-header">
-                    <h3>NETAŞ A.Ş.</h3>
-                    <span class="exp-date">2024</span>
-                </div>
-                <p class="exp-role">IT Infrastructure Intern</p>
-                <p>Network device configurations and infrastructure audits.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="skills">
-        <h2>Yetenekler</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>🐳 Docker</h3>
-                <p>Container, Compose, Networks</p>
-            </div>
-            <div class="skill-card">
-                <h3>💻 C/C++</h3>
-                <p>System Programming</p>
-            </div>
-            <div class="skill-card">
-                <h3>🐍 Python</h3>
-                <p>Scripting, Automation</p>
-            </div>
-            <div class="skill-card">
-                <h3>🌐 Web</h3>
-                <p>HTML, CSS, JavaScript</p>
-            </div>
-            <div class="skill-card">
-                <h3>🐧 Linux</h3>
-                <p>System Administration</p>
-            </div>
-            <div class="skill-card">
-                <h3>🗄️ Database</h3>
-                <p>MariaDB, Redis</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="projects">
-        <h2>Projeler</h2>
-        <div class="project-grid">
-            <div class="project-card featured">
-                <h3>🏆 Sui Hackfest - Best Integration</h3>
-                <p>Smart contract logic using Move language for Blockchain/Web 3.0</p>
-                <span class="tag">Blockchain</span>
-                <span class="tag">Move</span>
-            </div>
-            <div class="project-card">
-                <h3>ft_irc</h3>
-                <p>IRC server in C++98 with TCP/IP Sockets and I/O Multiplexing</p>
-                <span class="tag">C++</span>
-                <span class="tag">Networking</span>
-            </div>
-            <div class="project-card">
-                <h3>Inception</h3>
-                <p>Multi-container Docker Compose with network isolation</p>
-                <span class="tag">Docker</span>
-                <span class="tag">DevOps</span>
-            </div>
-            <div class="project-card">
-                <h3>Philosophers</h3>
-                <p>Multi-threading with deadlock prevention</p>
-                <span class="tag">C</span>
-                <span class="tag">Threading</span>
-            </div>
-            <div class="project-card">
-                <h3>Cub3D</h3>
-                <p>3D rendering engine using Raycasting</p>
-                <span class="tag">C</span>
-                <span class="tag">Graphics</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="music" class="music-section">
-        <h2>🎵 Müzik Kulübü</h2>
-        <div class="music-content">
-            <div class="vinyl-container">
-                <div class="vinyl" id="vinyl">
-                    <div class="vinyl-label">
-                        <span>42</span>
+                <p class="description">
+                    Software Engineer with a strong foundation in Computer Engineering and systems programming (C/C++). 
+                    Actively expanding expertise into <strong>Backend Development (Python, SQL, Node.js/Express)</strong> 
+                    and <strong>Mobile Development (Flutter)</strong>. Proven problem-solver with experience in scalable 
+                    architecture and high-performance applications, focused on delivering robust and efficient software 
+                    solutions across diverse platforms.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <span class="stat-value">&gt; 42</span>
+                        <span class="stat-label">École 42 Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">&gt; 1337</span>
+                        <span class="stat-label">Coffee Cups</span>
+                    </div>
+                    <div class="stat absurd">
+                        <span class="stat-value">&gt; ∞</span>
+                        <span class="stat-label">Segmentation Faults</span>
                     </div>
                 </div>
-                <div class="tonearm"></div>
             </div>
-            <div class="music-info">
-                <h3>🎸 42 Istanbul Music Club</h3>
-                <p>Kodlamanın ritmi, müziğin harmonisi...</p>
-                
-                <div class="spotify-embed">
-                    <iframe 
-                        style="border-radius:12px" 
-                        src="https://open.spotify.com/embed/playlist/18tkfZDWEBmjI0iXsBbHa8?utm_source=generator&theme=0" 
-                        width="100%" 
-                        height="352" 
-                        frameBorder="0" 
-                        allowfullscreen="" 
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-                
-                <div class="equalizer active" id="equalizer">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-        </div>
-        <div class="floating-notes">
-            <span class="note">♪</span>
-            <span class="note">♫</span>
-            <span class="note">♬</span>
-            <span class="note">♩</span>
-            <span class="note">♪</span>
-            <span class="note">♫</span>
         </div>
     </section>
 
-    <section id="contact" class="contact">
-        <h2>İletişim</h2>
-        <div class="contact-info">
-            <p>📧 <a href="mailto:0halukozdemir@gmail.com">0halukozdemir@gmail.com</a></p>
-            <p>🔗 <a href="https://linkedin.com/in/halukozdemir">linkedin.com/in/halukozdemir</a></p>
-            <p>📱 +90 535 277 3503</p>
-            <p>📍 Istanbul, Turkey</p>
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="prompt">root@haluk:~$</span>
+                <span class="command">ls -la /career/</span>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">2025</div>
+                    <div class="card">
+                        <h3>OGEM İstanbul</h3>
+                        <p class="role">Software Developer (Startup Participant)</p>
+                        <ul class="bullet-list">
+                            <li>Engineered core system architecture and logical layers for <strong>Slidle</strong></li>
+                            <li>Optimized critical path algorithms to resolve performance bottlenecks</li>
+                            <li>Collaborated in an Agile development workflow for functional MVP features</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span>#startup</span>
+                            <span>#architecture</span>
+                            <span>#agile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">2024</div>
+                    <div class="card">
+                        <h3>NETAŞ A.Ş.</h3>
+                        <p class="role">IT Infrastructure Intern</p>
+                        <ul class="bullet-list">
+                            <li>Analyzed network device configurations</li>
+                            <li>Assisted in infrastructure audits for operational security</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span>#networking</span>
+                            <span>#security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Haluk Mert Özdemir - 42 Istanbul</p>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="prompt">root@haluk:~$</span>
+                <span class="command">git log --oneline --decorate</span>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Featured Project -->
+                <div class="card project-card featured">
+                    <div class="project-badge">🏆 AWARD WINNING</div>
+                    <h3>Sui Hackfest - Best Integration</h3>
+                    <p>Won <strong>Best Surflux Integration</strong>; engineered smart contract logic and efficient 
+                    data streaming using the Move language.</p>
+                    <div class="tech-stack">
+                        <span>Blockchain</span>
+                        <span>Move</span>
+                        <span>Web 3.0</span>
+                        <span>Smart Contracts</span>
+                    </div>
+                    <div class="project-meta">Dec 2025</div>
+                </div>
+
+                <!-- Systems Projects -->
+                <div class="card project-card">
+                    <h3>ft_irc</h3>
+                    <p>Developed a functional IRC server in <strong>C++98</strong> using TCP/IP Sockets and 
+                    <strong>I/O Multiplexing (poll/select)</strong>.</p>
+                    <div class="tech-stack">
+                        <span>C++</span>
+                        <span>TCP/IP</span>
+                        <span>Networking</span>
+                    </div>
+                    <div class="project-meta">2024-2025</div>
+                </div>
+
+                <div class="card project-card">
+                    <h3>Philosophers</h3>
+                    <p>Solved synchronization issues using <strong>multi-threading</strong> and primitives to 
+                    prevent deadlocks and race conditions.</p>
+                    <div class="tech-stack">
+                        <span>C</span>
+                        <span>Threads</span>
+                        <span>Mutexes</span>
+                    </div>
+                    <div class="project-meta">2024</div>
+                </div>
+
+                <div class="card project-card">
+                    <h3>Inception</h3>
+                    <p>Orchestrated a multi-container environment using <strong>Docker Compose</strong> with 
+                    strict network isolation.</p>
+                    <div class="tech-stack">
+                        <span>Docker</span>
+                        <span>DevOps</span>
+                        <span>Networking</span>
+                    </div>
+                    <div class="project-meta">2024-2025</div>
+                </div>
+
+                <div class="card project-card">
+                    <h3>Cub3D</h3>
+                    <p>Engineered a 3D rendering engine using <strong>Raycasting</strong> algorithms in C with 
+                    performance optimization.</p>
+                    <div class="tech-stack">
+                        <span>C</span>
+                        <span>Graphics</span>
+                        <span>Algorithms</span>
+                    </div>
+                    <div class="project-meta">2023-2024</div>
+                </div>
+
+                <div class="card project-card">
+                    <h3>CPP Modules</h3>
+                    <p>Mastered <strong>C++</strong> design patterns and the <strong>Orthodox Canonical Form</strong> 
+                    for robust memory management.</p>
+                    <div class="tech-stack">
+                        <span>C++</span>
+                        <span>OOP</span>
+                        <span>Design Patterns</span>
+                    </div>
+                    <div class="project-meta">2023-2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="prompt">root@haluk:~$</span>
+                <span class="command">cat tech_stack.json | jq</span>
+            </div>
+            
+            <div class="skills-container">
+                <div class="card skill-category">
+                    <h3>"programming_languages":</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-name">C / C++</div>
+                            <div class="bar"><div class="fill" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-name">Python</div>
+                            <div class="bar"><div class="fill" style="width: 70%"></div></div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-name">C#</div>
+                            <div class="bar"><div class="fill" style="width: 65%"></div></div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-name">Move (Blockchain)</div>
+                            <div class="bar"><div class="fill" style="width: 60%"></div></div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-name">Shell Scripting</div>
+                            <div class="bar"><div class="fill" style="width: 80%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card skill-category">
+                    <h3>"technical_interests":</h3>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">Node.js / Express</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Mobile Development</span>
+                    </div>
+                </div>
+
+                <div class="card skill-category">
+                    <h3>"tools_infrastructure":</h3>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Linux (CLI)</span>
+                        <span class="tech-tag">Git / GitHub</span>
+                        <span class="tech-tag">Unity</span>
+                    </div>
+                </div>
+
+                <div class="card skill-category">
+                    <h3>"core_competencies":</h3>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">Data Structures</span>
+                        <span class="tech-tag">System Architecture</span>
+                        <span class="tech-tag">Concurrent Programming</span>
+                        <span class="tech-tag">Memory Management</span>
+                    </div>
+                </div>
+
+                <div class="card skill-category absurd-skill">
+                    <h3>"easter_eggs":</h3>
+                    <div class="tag-cloud">
+                        <span class="tech-tag glitch-tag">vim > emacs</span>
+                        <span class="tech-tag glitch-tag">tabs > spaces</span>
+                        <span class="tech-tag glitch-tag">dark mode only</span>
+                        <span class="tech-tag glitch-tag">sudo make coffee</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Club Section -->
+    <section id="music" class="section music-section">
+        <div class="container">
+            <div class="section-header music-header">
+                <span class="prompt">haluk@42istanbul:~$</span>
+                <span class="command">./start_jam_session.sh --band=music-club</span>
+            </div>
+
+            <!-- Main Club Card -->
+            <div class="card music-main-card">
+                <div class="amp-lights">
+                    <span class="amp-light"></span>
+                    <span class="amp-light"></span>
+                    <span class="amp-light"></span>
+                </div>
+                <h2 class="club-title">🎸 42Istanbul Müzik Kulübü 🎸</h2>
+                <div class="vinyl-container">
+                    <div class="vinyl-record">
+                        <div class="vinyl-label">
+                            <div class="vinyl-hole"></div>
+                            <div class="vinyl-text">ROCK</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="club-description">
+                    Code by day, rock by night. 42Istanbul'un en gürültülü topluluğu. 
+                    Burada segmentation fault'lar kadar power chord'lar da önemlidir.
+                </p>
+                <div class="music-stats">
+                    <div class="music-stat">
+                        <div class="stat-icon">🎵</div>
+                        <div class="stat-value">∞</div>
+                        <div class="stat-label">Jam Sessions</div>
+                    </div>
+                    <div class="music-stat">
+                        <div class="stat-icon">🤘</div>
+                        <div class="stat-value">11</div>
+                        <div class="stat-label">Volume Level</div>
+                    </div>
+                    <div class="music-stat">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Rock Energy</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guitar Showcase -->
+            <div class="guitar-showcase">
+                <div class="card amp-card">
+                    <div class="amp-header">MARSHALL</div>
+                    <h3>Elektro Gitar Arsenal</h3>
+                    <div class="guitar-grid">
+                        <div class="guitar-item">
+                            <img src="les-paul.png" 
+                                 alt="Les Paul Style Guitar" 
+                                 class="guitar-img"
+                                 style="width: 100%; height: auto; border-radius: 8px; object-fit: cover;">
+                            <p class="guitar-name">Les Paul Style</p>
+                        </div>
+                        <div class="guitar-item">
+                            <img src="stratocaster.png" 
+                                 alt="Stratocaster Style Guitar" 
+                                 class="guitar-img"
+                                 style="width: 100%; height: auto; border-radius: 8px; object-fit: cover;">
+                            <p class="guitar-name">Stratocaster Style</p>
+                        </div>
+                    </div>
+                    <div class="amp-controls">
+                        <div class="knob">VOL</div>
+                        <div class="knob">GAIN</div>
+                        <div class="knob">TONE</div>
+                    </div>
+                </div>
+
+                <!-- Playlist Card -->
+                <div class="card playlist-card">
+                    <h3>📼 Current Playlist</h3>
+                    <p class="club-description" style="text-align: left; max-width: 100%;">
+                        The official 42Istanbul Music Club playlist. Click any track to play it.
+                    </p>
+                    <div class="playlist">
+                        <!-- Added real YouTube embed IDs for each song -->
+                        <div class="playlist-item" data-spotify="3s2MZsEfiMe7ZjiRtun6wv">
+                            <span class="track-number">01</span>
+                            <span class="track-name">Mogwai - Take Me Somewhere Nice</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="6q7p4AczMoOVzw95GDXz1x">
+                            <span class="track-number">02</span>
+                            <span class="track-name">Anathema - Flying</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="1158ckiB5S4cpsdYHDB9IF">
+                            <span class="track-number">03</span>
+                            <span class="track-name">Deftones - My Own Summer</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="5r5cp9IpziiIsR6b93vcnQ">
+                            <span class="track-number">04</span>
+                            <span class="track-name">Empire of the Sun - Walking on a Dream</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="6z4VNjyxLfRXRx23gzl51x">
+                            <span class="track-number">05</span>
+                            <span class="track-name">Gary Moore - Parisienne Walkways</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="2X485T9Z5Ly0xyaghN73ed">
+                            <span class="track-number">06</span>
+                            <span class="track-name">Tame Impala - Let It Happen</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="78FzQfooQzB43sGzlpI2At">
+                            <span class="track-number">07</span>
+                            <span class="track-name">Whitesnake - Is This Love</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="0lP4HYLmvowOKdsQ7CVkuq">
+                            <span class="track-number">08</span>
+                            <span class="track-name">Thirty Seconds to Mars - The Kill</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="45S5WTQEGOB1VHr1Q4FuPl">
+                            <span class="track-number">09</span>
+                            <span class="track-name">Harry Styles - Golden</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="3QaPy1KgI7nu9FJEQUgn6h">
+                            <span class="track-number">10</span>
+                            <span class="track-name">Billie Eilish - Wildflower</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="0DnGfA1r8pAssJCuq4ojla">
+                            <span class="track-number">11</span>
+                            <span class="track-name">Gary Moore - Still Got the Blues</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="1EJZQ6uhrvl4JtoKn7RKFd">
+                            <span class="track-number">12</span>
+                            <span class="track-name">Scorpions - Follow Your Heart</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="0ElpbbncWT9aS7mgoqEHbQ">
+                            <span class="track-number">13</span>
+                            <span class="track-name">Syml - Where's My Love</span>
+                        </div>
+                        <div class="playlist-item" data-spotify="3EXLlwUJah1lBeyWh6jpiG">
+                            <span class="track-number">14</span>
+                            <span class="track-name">Novembre - Nostalgiaplatz</span>
+                        </div>
+                    </div>
+
+                    <!-- Spotify player container -->
+                    <div id="spotify-player-container" style="display: none; margin-top: 2rem;">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;">🎵 Now Playing</h4>
+                        <div id="spotify-player"></div>
+                    </div>
+
+                    <!-- Audio Visualizer -->
+                    <div class="audio-visualizer">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs Section -->
+            <div class="card tabs-card">
+                <h3>🎼 Popular Riffs & Tabs</h3>
+                <div class="tabs-display">
+                    <pre class="guitar-tab">
+E|---0---3---0---------------|
+B|-------------3---1---0-----|
+G|-----------------------0---|
+D|---------------------------|
+A|---------------------------|
+E|---------------------------|
+    Smoke on the Water
+                    </pre>
+                    <pre class="guitar-tab">
+E|---3---2---0---------------|
+B|-------------3---0---------|
+G|-----------------------0---|
+D|---------------------------|
+A|---------------------------|
+E|---------------------------|
+    Sweet Child O' Mine
+                    </pre>
+                </div>
+                <div class="chord-progression">
+                    <span class="chord">Am</span>
+                    <span class="chord">G</span>
+                    <span class="chord">F</span>
+                    <span class="chord">E</span>
+                </div>
+            </div>
+
+            <!-- Join Section -->
+            <div class="card join-card">
+                <h3>Katıl Bize!</h3>
+                <p>42Istanbul Müzik Kulübü her seviyeden müzisyeni bekliyor. 
+                   Gitar, bas, davul, vokal - hepsi hoş geldin!</p>
+                <div class="join-buttons">
+                    <button class="rock-button">🤘 Join the Band</button>
+                    <button class="rock-button">🎸 Jam Sessions</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Music Notes -->
+        <div class="music-notes-container">
+            <span class="music-note">♪</span>
+            <span class="music-note">♫</span>
+            <span class="music-note">♪</span>
+            <span class="music-note">♫</span>
+            <span class="music-note">♪</span>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="prompt">root@haluk:~$</span>
+                <span class="command">ping haluk.local</span>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="card contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:0halukozdemir@gmail.com">0halukozdemir@gmail.com</a>
+                </div>
+
+                <div class="card contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <a href="tel:+905352773503">+90 535 277 3503</a>
+                </div>
+
+                <div class="card contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/halukozdemir/" target="_blank">linkedin.com/in/halukozdemir</a>
+                </div>
+
+                <div class="card contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p>Istanbul, Turkey</p>
+                </div>
+            </div>
+
+            <div class="card terminal-output">
+                <pre>
+PING haluk.local (192.168.42.42): 56 data bytes
+64 bytes from 192.168.42.42: icmp_seq=0 ttl=64 time=0.042 ms
+64 bytes from 192.168.42.42: icmp_seq=1 ttl=64 time=0.037 ms
+64 bytes from 192.168.42.42: icmp_seq=2 ttl=64 time=0.041 ms
+^C
+--- haluk.local ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 0.037/0.040/0.042/0.002 ms
+
+STATUS: ✅ AVAILABLE FOR OPPORTUNITIES
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Haluk Mert Özdemir // Compiled with ❤️ and ☕</p>
+            <p class="absurd-footer">WARNING: This site may cause spontaneous urge to code</p>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Matrix Rain Background -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <script>
+// Matrix Rain Effect
+const canvas = document.getElementById("matrix-canvas")
+const ctx = canvas.getContext("2d")
+
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
+const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*(){}[]<>/~"
+const fontSize = 14
+const columns = canvas.width / fontSize
+const drops = Array(Math.floor(columns)).fill(1)
+
+function drawMatrix() {
+  ctx.fillStyle = "rgba(10, 14, 39, 0.05)"
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+  ctx.fillStyle = "#00ff88"
+  ctx.font = fontSize + "px monospace"
+
+  for (let i = 0; i < drops.length; i++) {
+    const text = matrix.charAt(Math.floor(Math.random() * matrix.length))
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize)
+
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0
+    }
+    drops[i]++
+  }
+}
+
+setInterval(drawMatrix, 50)
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+})
+
+// Custom Cursor
+const cursorFollower = document.getElementById("cursor-follower")
+
+document.addEventListener("mousemove", (e) => {
+  cursorFollower.style.left = e.clientX + "px"
+  cursorFollower.style.top = e.clientY + "px"
+})
+
+document.querySelectorAll("button, a, .card").forEach((elem) => {
+  elem.addEventListener("mouseenter", () => {
+    cursorFollower.style.transform = "scale(2)"
+    cursorFollower.style.borderColor = "#ff006e"
+  })
+  elem.addEventListener("mouseleave", () => {
+    cursorFollower.style.transform = "scale(1)"
+    cursorFollower.style.borderColor = "#00ff88"
+  })
+})
+
+// Typewriter Effect
+const phrases = [
+  "Software Engineer // Systems Programmer",
+  "C++ Enthusiast // Low-Level Wizard",
+  "Blockchain Developer // Web3 Builder",
+  "École 42 Graduate // Problem Solver",
+  "Segmentation Fault Hunter 🐛",
+]
+
+let phraseIndex = 0
+let charIndex = 0
+let isDeleting = false
+const typedTextElement = document.getElementById("typed-text")
+const typeSpeed = 100
+const deleteSpeed = 50
+const pauseTime = 2000
+
+function typeWriter() {
+  const currentPhrase = phrases[phraseIndex]
+
+  if (!isDeleting && charIndex <= currentPhrase.length) {
+    typedTextElement.textContent = currentPhrase.substring(0, charIndex)
+    charIndex++
+    setTimeout(typeWriter, typeSpeed)
+  } else if (isDeleting && charIndex >= 0) {
+    typedTextElement.textContent = currentPhrase.substring(0, charIndex)
+    charIndex--
+    setTimeout(typeWriter, deleteSpeed)
+  } else if (!isDeleting && charIndex === currentPhrase.length + 1) {
+    setTimeout(() => {
+      isDeleting = true
+      typeWriter()
+    }, pauseTime)
+  } else if (isDeleting && charIndex < 0) {
+    isDeleting = false
+    phraseIndex = (phraseIndex + 1) % phrases.length
+    setTimeout(typeWriter, 500)
+  }
+}
+
+typeWriter()
+
+// Smooth Scroll Navigation
+document.querySelectorAll(".nav-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    const sectionId = button.getAttribute("data-section")
+    const section = document.getElementById(sectionId)
+
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" })
+
+      // Add flash effect
+      button.style.background = "#00ff88"
+      button.style.color = "#0a0e27"
+      setTimeout(() => {
+        button.style.background = ""
+        button.style.color = ""
+      }, 300)
+    }
+  })
+})
+
+// Intersection Observer for animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -100px 0px",
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = "1"
+      entry.target.style.transform = "translateY(0)"
+    }
+  })
+}, observerOptions)
+
+document.querySelectorAll(".card, .timeline-item").forEach((elem) => {
+  elem.style.opacity = "0"
+  elem.style.transform = "translateY(30px)"
+  elem.style.transition = "all 0.6s ease"
+  observer.observe(elem)
+})
+
+// Random Glitch Effect
+function randomGlitch() {
+  const glitchElements = document.querySelectorAll(".glitch, .glitch-tag")
+  const randomElement = glitchElements[Math.floor(Math.random() * glitchElements.length)]
+
+  if (randomElement) {
+    randomElement.style.animation = "none"
+    setTimeout(() => {
+      randomElement.style.animation = ""
+    }, 10)
+  }
+}
+
+setInterval(randomGlitch, 3000)
+
+// Easter Egg: Konami Code
+let konamiCode = []
+const konamiSequence = [
+  "ArrowUp",
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "ArrowLeft",
+  "ArrowRight",
+  "b",
+  "a",
+]
+
+document.addEventListener("keydown", (e) => {
+  konamiCode.push(e.key)
+  konamiCode = konamiCode.slice(-10)
+
+  if (konamiCode.join(",") === konamiSequence.join(",")) {
+    document.body.style.filter = "invert(1) hue-rotate(180deg)"
+    setTimeout(() => {
+      document.body.style.filter = ""
+    }, 3000)
+    alert("🎮 CHEAT CODE ACTIVATED! You found the secret!")
+  }
+})
+
+// Rock Easter Egg: Press "R-O-C-K" to trigger
+let rockCode = []
+const rockSequence = ["r", "o", "c", "k"]
+
+document.addEventListener("keydown", (e) => {
+  rockCode.push(e.key.toLowerCase())
+  rockCode = rockCode.slice(-4)
+
+  if (rockCode.join("") === rockSequence.join("")) {
+    // Create rock explosion effect
+    document.body.style.animation = "shake 0.5s"
+    setTimeout(() => {
+      document.body.style.animation = ""
+    }, 500)
+
+    // Show rock message
+    const rockMsg = document.createElement("div")
+    rockMsg.textContent = "🤘 ROCK ON! 🤘"
+    rockMsg.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4rem;
+      color: #ff006e;
+      font-weight: bold;
+      z-index: 10000;
+      text-shadow: 0 0 20px #ff006e, 0 0 40px #ff006e;
+      animation: rockPop 2s ease-out forwards;
+    `
+    document.body.appendChild(rockMsg)
+    setTimeout(() => rockMsg.remove(), 2000)
+
+    console.log("%c🎸 ROCK MODE ACTIVATED! 🎸", "color: #ff006e; font-size: 20px; font-weight: bold;")
+  }
+})
+
+// Guitar Chord Click Simulation
+document.querySelectorAll(".chord").forEach((chord) => {
+  chord.addEventListener("click", function () {
+    // Visual feedback
+    this.style.transform = "translateY(-10px) rotate(5deg)"
+    setTimeout(() => {
+      this.style.transform = ""
+    }, 200)
+
+    // Console log
+    console.log(`%c♪ Playing ${this.textContent} chord ♪`, "color: #00ff88; font-size: 14px;")
+  })
+})
+
+// Amp Knob Interaction
+document.querySelectorAll(".knob").forEach((knob) => {
+  let rotation = 0
+  knob.addEventListener("click", function () {
+    rotation += 45
+    this.style.transform = `rotate(${rotation}deg)`
+    console.log(`%c🎚️ ${this.textContent} adjusted`, "color: #ffd60a; font-size: 12px;")
+  })
+})
+
+// Spotify Player
+document.querySelectorAll(".playlist-item").forEach((item) => {
+  item.addEventListener("click", function () {
+    const spotifyId = this.getAttribute("data-spotify")
+    const playerContainer = document.getElementById("spotify-player-container")
+    const playerDiv = document.getElementById("spotify-player")
+
+    if (!spotifyId) {
+      console.log("%c⚠️ No Spotify ID found", "color: #ffd60a; font-size: 12px;")
+      return
+    }
+
+    // Reset all track numbers and remove playing class
+    document.querySelectorAll(".playlist-item").forEach((i) => {
+      i.classList.remove("playing")
+      const num = i.querySelector(".track-number")
+      const origNum = num.getAttribute("data-original-number")
+      if (origNum) {
+        num.textContent = origNum
+      }
+    })
+    
+    this.classList.add("playing")
+
+    const trackNum = this.querySelector(".track-number")
+    const originalNumber = trackNum.textContent
+    trackNum.setAttribute("data-original-number", originalNumber)
+    trackNum.textContent = "▶"
+
+    playerContainer.style.display = "block"
+
+    const trackName = this.querySelector(".track-name").textContent
+
+    // Create Spotify iframe
+    playerDiv.innerHTML = `
+      <iframe 
+        style="border-radius:12px" 
+        src="https://open.spotify.com/embed/track/${spotifyId}?utm_source=generator" 
+        width="100%" 
+        height="352" 
+        frameBorder="0" 
+        allowfullscreen="" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+      </iframe>
+    `
+
+    console.log(`%c🎵 Now playing: ${trackName}`, "color: #ff006e; font-size: 14px;")
+  })
+})
+
+// Rock Buttons
+document.querySelectorAll(".rock-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    const messages = ["🎸 Welcome to the band!", "🤘 Let's jam!", "⚡ Rock and roll!", "🎵 Music is life!"]
+    const randomMsg = messages[Math.floor(Math.random() * messages.length)]
+    alert(randomMsg)
+    console.log(`%c${randomMsg}`, "color: #ff006e; font-size: 16px; font-weight: bold;")
+  })
+})
+
+// Console Easter Egg
+console.log("%c🚀 HALUK MERT ÖZDEMİR", "color: #00ff88; font-size: 24px; font-weight: bold;")
+console.log("%c💻 Software Engineer | Systems Programmer", "color: #64ffda; font-size: 14px;")
+console.log("%c📧 0halukozdemir@gmail.com", "color: #8892b0; font-size: 12px;")
+console.log(
+  "%c🔍 Checking the console? Nice! Here's a secret: Try the Konami Code!",
+  "color: #ff006e; font-size: 12px;",
+)
+console.log("%c⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️ B A", "color: #ffd60a; font-size: 12px;")
+    </script>
 </body>
 </html>

@@ -27,6 +27,7 @@ fclean: down
 	@docker system prune --all --force --volumes
 	@docker network prune --force
 	@docker volume prune --force
+	@docker volume rm -f srcs_portainer_data 2>/dev/null || true
 	@sudo rm -rf /home/halozdem/data/wordpress
 	@sudo rm -rf /home/halozdem/data/mariadb
 	@mkdir -p /home/halozdem/data/wordpress
