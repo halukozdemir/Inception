@@ -2,8 +2,8 @@ FROM debian:bookworm
 
 RUN apt update && apt install -y mariadb-server
 
-COPY conf/my.cnf /etc/mysql/conf.d/my.cnf
-RUN chmod 644 /etc/mysql/conf.d/my.cnf
+COPY conf/mariadb.conf /etc/mysql/conf.d/mariadb.conf
+RUN chmod 644 /etc/mysql/conf.d/mariadb.conf
 
 RUN sed -i 's/bind-address.*=.*127.0.0.1/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
 

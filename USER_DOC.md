@@ -47,6 +47,21 @@ make fclean
 
 *Note: Accept the self-signed SSL certificate warning in your browser.*
 
+## Adminer Login Instructions
+
+To access the database via Adminer (`https://halozdem.42.fr/adminer`), use the following credentials:
+
+| Field        | Value             | Source                                      |
+|--------------|-------------------|---------------------------------------------|
+| **System**   | MySQL             | Select from dropdown                        |
+| **Server**   | `mariadb`         | Container name (Docker network DNS)         |
+| **Username** | `wp_user`         | From `.env` file: `SQL_USER`                |
+| **Password** | *(see below)*     | From `srcs/secrets/db_password.txt`         |
+| **Database** | `wordpress`       | From `.env` file: `SQL_DATABASE`            |
+
+To get the password, read the content of `srcs/secrets/db_password.txt` file.
+
+
 ## Credentials
 Credentials and passwords are managed securely. They are not hardcoded but stored in files within the `srcs/secrets/` directory.
 
